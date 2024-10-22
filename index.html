@@ -1,0 +1,8 @@
+index.jsconst express = require('express'); const router = express.Router();
+const pool = require('../models/db'); // Import koneksi MySQL dari db.js //
+Route untuk test koneksi router.get('/tes-koneksi', async (req, res) => { try {
+// Lakukan query sederhana untuk test koneksi await pool.query('SELECT 1');
+res.status(200).json({ message: 'Koneksi berhasil' }); } catch (error) {
+console.error('Error connecting to the database:', error);
+res.status(500).json({ message: 'Koneksi gagal', error: error.message }); } });
+module.exports = router;
